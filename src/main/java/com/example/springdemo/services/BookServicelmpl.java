@@ -2,21 +2,22 @@ package com.example.springdemo.services;
 
 import com.example.springdemo.converters.ModelToEntity;
 import com.example.springdemo.entity.Book;
-import com.example.springdemo.repozitory.BookRep;
+import com.example.springdemo.repozitory.BookRepository;
 import com.example.springdemo.viewModel.BookModel;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BookServicelmpl implements BookService{
 
-    private BookRep bookRep;
+    private BookRepository bookRepository;
     private ModelToEntity modelToEntity;
 
 
     @Autowired
-    public BookServicelmpl(BookRep bookRep, ModelToEntity modelToEntity) {
-        this.bookRep = bookRep;
+    public BookServicelmpl(BookRepository bookRepository, ModelToEntity modelToEntity) {
+        this.bookRepository = bookRepository;
         this.modelToEntity = modelToEntity;
     }
 
@@ -24,26 +25,31 @@ public class BookServicelmpl implements BookService{
 
     @Override
     public List<Book> listAll() {
-        return null;
+        List<Book> books = new ArrayList<>();
+        bookRepository.findAll().forEach(books :: add);
+        return books;
     }
 
     @Override
     public Book getById(Long id) {
-        return null;
+        return bookRepository.findById(id).orElse(null);
     }
 
     @Override
     public Book saveOrUpdate(Book book) {
-        return null;
+        bookRepository.save(book);
+        return book;
     }
 
     @Override
     public void delete(Long id) {
-
+        bookRepository.deleteById(id);
     }
 
     @Override
     public Book saveorUpdateBookModel(BookModel bookModel) {
-        return null;
+        Book savedBook = saveOrUpdate(modelToEntity.convert(bookModel));
+        System.out.println("Saved Book Id:" + savedBook.getId());
+        return savedBook;
     }
 }
