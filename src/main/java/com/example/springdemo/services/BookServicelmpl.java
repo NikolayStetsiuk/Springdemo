@@ -5,9 +5,11 @@ import com.example.springdemo.entity.Book;
 import com.example.springdemo.repozitory.BookRep;
 import com.example.springdemo.viewModel.BookModel;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class BookServicelmpl implements BookService{
 
     private BookRep bookRep;
