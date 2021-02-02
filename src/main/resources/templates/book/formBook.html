@@ -19,7 +19,7 @@
 
     <h2>Product Details</h2>
     <div>
-        <form class="form-horizontal" th:object="${modelBook}" th:action="@{/}" method="post">
+        <form class="form-horizontal" th:object="${modelBook}" th:action="@{/book}" method="post">
 
             <div th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
                 <p th:text="#{form.hasErrors}">Error Message</p>
@@ -27,7 +27,7 @@
 
             <input type="hidden" th:field="*{id}"/>
 
-            <div class="form-group" th:class="${#fields.hasErrors('description')} ? 'form-group has-error' : 'form-group'">
+            <div class="form-group" th:class="${#fields.hasErrors('title')} ? 'form-group has-error' : 'form-group'">
                 <label class="col-sm-2 control-label">Title:</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" th:field="*{title}" th:errorclass="has-error"/>

@@ -24,15 +24,16 @@ public class BookController {
         this.entityToModel = entityToModel;
     }
 
-    @RequestMapping("/list")
+    @RequestMapping("/book/list")
     public String listBook(Model model) {
+        model.addAttribute("books", bookService.listAll());
+        return "/book/list";
+    }
 
-        model.addAttribute("books",bookService.listAll());
-        return "list";
+    @RequestMapping("/book/new")
+    public String newProduct(Model model){
+        model.addAttribute("modelBook", new BookModel());
+        return "book/formBook";
     }
-    @RequestMapping("/new")
-    public String newBook(Model model){
-        model.addAttribute("modelBook",new BookModel());
-        return "formBook";
-    }
+
 }
