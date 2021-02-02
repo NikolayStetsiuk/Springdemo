@@ -2,6 +2,7 @@ package com.example.springdemo.controllers;
 
 import com.example.springdemo.converters.EntityToModel;
 import com.example.springdemo.services.BookService;
+import com.example.springdemo.viewModel.BookModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,6 +32,7 @@ public class BookController {
     }
     @RequestMapping("/new")
     public String newBook(Model model){
+        model.addAttribute("modelBook",new BookModel());
         return "formBook";
     }
 }
