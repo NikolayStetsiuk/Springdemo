@@ -3,8 +3,10 @@ package com.example.springdemo.converters;
 import com.example.springdemo.entity.Book;
 import com.example.springdemo.viewModel.BookModel;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
+@Component
 public class ModelToEntity implements Converter<BookModel, Book> {
     @Override
     public Book convert(BookModel bookModel) {
