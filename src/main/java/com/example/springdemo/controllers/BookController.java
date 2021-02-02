@@ -29,4 +29,8 @@ public class BookController {
         model.addAttribute("books",bookService.listAll());
         return "list";
     }
+    @RequestMapping("/new")
+    public String newBook(Model model){
+        return "formBook";
+    }
 }
