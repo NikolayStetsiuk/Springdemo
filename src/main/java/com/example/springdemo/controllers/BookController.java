@@ -24,7 +24,9 @@ public class BookController {
     }
 
     @RequestMapping("/list")
-    public String viewInedx() {
+    public String listBook(Model model) {
+
+        model.addAttribute("books",bookService.listAll());
         return "list";
     }
 }
