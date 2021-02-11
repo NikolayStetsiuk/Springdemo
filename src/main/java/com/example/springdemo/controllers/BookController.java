@@ -29,23 +29,23 @@ public class BookController {
     public void setEntityToModel(EntityToModel entityToModel) {
         this.entityToModel = entityToModel;
     }
+
     @RequestMapping("/")
     public String redirToList(){
         return "redirect:/book/list";
     }
 
-    @RequestMapping("/book/list")
+    @RequestMapping({"/book/list","/book"})
     public String listBook(Model model) {
         model.addAttribute("books", bookService.listAll());
         return "/book/list";
     }
 
-    @RequestMapping("/book/new")
-    public String newBook(Model model){
-        model.addAttribute("modelBook", new BookModel());
+    @RequestMapping("/book/show/{id}")
+    public String getBook(@PathVariable String id, Model model){
+        model.addAttribute("books",bookService.getById(Long.valueOf(id)));
         return "book/formBook";
     }
-
 
     @RequestMapping("book/edit/{id}")
     public String edit(@PathVariable String id, Model model){
@@ -56,9 +56,9 @@ public class BookController {
         return "book/formBook";
     }
 
-    @RequestMapping("/book/show/{id}")
-    public String getBook(@PathVariable String id, Model model){
-        model.addAttribute("books",bookService.getById(Long.valueOf(id)));
+    @RequestMapping("/book/new")
+    public String newBook(Model model){
+        model.addAttribute("modelBook", new BookModel());
         return "book/formBook";
     }
 

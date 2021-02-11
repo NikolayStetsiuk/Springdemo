@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Spring Core Online Tutorial - Product Form</title>
+    <title>Spring Core Online Tutorial - Book Form</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
     <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.4/css/bootstrap.min.css"
@@ -17,7 +17,7 @@
 <body>
 <div class="container">
 
-    <h2>Product Details</h2>
+    <h2>Book Details</h2>
     <div>
         <form class="form-horizontal" th:object="${modelBook}" th:action="@{/book}" method="post">
 
@@ -43,7 +43,7 @@
             <div class="form-group" th:class="${#fields.hasErrors('author')} ? 'form-group has-error' : 'form-group'">
                 <label class="col-sm-2 control-label">Author:</label>
                 <div class="col-sm-10">
-                    <input type="number" min="0" max="5000" step="0.01" class="form-control" th:field="*{author}" th:errorclass="has-error"/>
+                    <input type="text" class="form-control" th:field="*{author}" th:errorclass="has-error"/>
 
                     <span class="help-block">
                        <ul>
@@ -62,6 +62,7 @@
                        <ul>
                            <li th:each="err : ${#fields.errors('imageUrl')}" th:text="${err}" />
                        </ul>
+                    </span>
                     </span>
                 </div>
             </div>
