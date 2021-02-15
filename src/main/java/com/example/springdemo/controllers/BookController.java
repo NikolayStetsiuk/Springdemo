@@ -68,13 +68,9 @@ public class BookController {
         if (bindingResult.hasErrors()){
             return "book/formBook";
         }
-        Book savedBook = bookService.saveorUpdateBookModel(bookModel);
-        return "redirect:/book/show";
-    }
 
-    @RequestMapping("/book/upload/")
-    public String uploadFile(){
-        return "/book/uploadForm";
+        Book savedBook = bookService.saveorUpdateBookModel(bookModel);
+        return "redirect:/book/show" + savedBook.getId();
     }
 
     @RequestMapping("book/delete/{id}")
