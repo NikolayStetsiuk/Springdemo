@@ -44,7 +44,7 @@ public class BookController {
     @RequestMapping("/book/show/{id}")
     public String getBook(@PathVariable String id, Model model){
         model.addAttribute("books",bookService.getById(Long.valueOf(id)));
-        return "book/formBook";
+        return "book/show";
     }
 
     @RequestMapping("book/edit/{id}")
@@ -70,7 +70,7 @@ public class BookController {
         }
 
         Book savedBook = bookService.saveorUpdateBookModel(bookModel);
-        return "redirect:/book/show" + savedBook.getId();
+        return "redirect:/book/show/" + savedBook.getId();
     }
 
     @RequestMapping("book/delete/{id}")
