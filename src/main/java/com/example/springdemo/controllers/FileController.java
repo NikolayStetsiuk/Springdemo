@@ -3,6 +3,10 @@ package com.example.springdemo.controllers;
 import com.example.springdemo.services.Fileservice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class FileController {
@@ -14,4 +18,16 @@ public class FileController {
     public void setFileservice(Fileservice fileservice) {
         this.fileservice = fileservice;
     }
+
+    @PostMapping("/book/uploadFile")
+    public String uploadFile(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {
+
+        fileservice.uploadFile(file);
+
+        redirectAttributes.addFlashAttribute("message",
+                "You successfully uploaded " + file.getOriginalFilename() + "!");
+
+        return "redirect:/";
+    }
+
 }

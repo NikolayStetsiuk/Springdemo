@@ -3,6 +3,8 @@ package com.example.springdemo.services;
 
 import com.example.springdemo.exceptions.FileStorageException;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
