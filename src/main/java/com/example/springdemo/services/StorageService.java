@@ -1,19 +1,18 @@
 package com.example.springdemo.services;
 
-import org.springframework.stereotype.Component;
+import org.springframework.core.io.Resource;
+import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.annotation.Resource;
 import java.nio.file.Path;
 import java.util.stream.Stream;
 
-
-@Component
+@Service
 public interface StorageService {
 
     void init();
 
-    void store(MultipartFile file);
+    void  store(MultipartFile file);
 
     Stream<Path> loadAll();
 

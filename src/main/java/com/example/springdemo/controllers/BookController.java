@@ -19,6 +19,7 @@ public class BookController {
     private BookService bookService;
     private EntityToModel entityToModel;
 
+
     @Autowired
     public void setBookService(BookService bookService) {
         this.bookService = bookService;
@@ -82,5 +83,7 @@ public class BookController {
         bookService.delete(Long.valueOf(id));
         return "redirect:/book/list";
     }
+
+
 
 }
