@@ -8,6 +8,8 @@ public class BookModel {
     private String title;
     private String author;
     private String imageUrl;
+    private String fileName;
+
 
     public Long getId() {
         return id;
@@ -40,4 +42,9 @@ public class BookModel {
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
+
+    public String getFileName() { return fileName; }
+
+    public void setFileName(String fileName) { this.fileName = fileName; }
+
 }

@@ -15,6 +15,15 @@ public class Book {
     private String title;
     private String author;
     private String imageUrl;
+    private String fileName;
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
 
     public Book(){}
 
