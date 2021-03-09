@@ -1,6 +1,8 @@
 package com.example.springdemo.entity;
 
 
+import org.springframework.beans.factory.annotation.Value;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,6 +18,9 @@ public class Book {
     private String author;
     private String imageUrl;
     private String fileName;
+
+    @Value("${upload.path}")
+    private  String uploadPath;
 
     public String getFileName() {
         return fileName;
