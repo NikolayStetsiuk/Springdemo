@@ -15,6 +15,7 @@ public class EntityToModel implements Converter<Book, BookModel> {
         bookModel.setAuthor(book.getAuthor());
         bookModel.setTitle(book.getTitle());
         bookModel.setImageUrl(book.getImageUrl());
+        bookModel.setFileName(book.getFileName());
         return bookModel;
     }
 }

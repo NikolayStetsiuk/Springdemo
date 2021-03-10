@@ -18,7 +18,7 @@ public class ModelToEntity implements Converter<BookModel, Book> {
         book.setAuthor(bookModel.getAuthor());
         book.setImageUrl(bookModel.getImageUrl());
         book.setTitle(bookModel.getTitle());
-
+        book.setFileName(bookModel.getFileName());
         return book;
     }
 }
