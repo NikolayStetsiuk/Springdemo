@@ -16,7 +16,6 @@ public class BookServicelmpl implements BookService{
     private BookRepository bookRepository;
     private ModelToEntity modelToEntity;
 
-
     @Autowired
     public BookServicelmpl(BookRepository bookRepository, ModelToEntity modelToEntity) {
         this.bookRepository = bookRepository;

@@ -19,9 +19,6 @@ public class Book {
     private String imageUrl;
     private String fileName;
 
-    @Value("${upload.path}")
-    private  String uploadPath;
-
     public String getFileName() {
         return fileName;
     }

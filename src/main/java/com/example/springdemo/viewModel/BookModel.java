@@ -2,6 +2,9 @@ package com.example.springdemo.viewModel;
 
 //view Model
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class BookModel {
 
     private Long id;

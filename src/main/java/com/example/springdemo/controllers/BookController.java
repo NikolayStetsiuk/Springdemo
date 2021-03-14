@@ -23,7 +23,12 @@ public class BookController {
 
     private BookService bookService;
     private EntityToModel entityToModel;
+    private BookModel bookModel;
 
+    @Autowired
+    public void setBookModel(BookModel bookModel) {
+        this.bookModel = bookModel;
+    }
 
     @Autowired
     public void setBookService(BookService bookService) {
@@ -75,25 +80,12 @@ public class BookController {
         return "book/formBook";
     }
 
-    @RequestMapping(value = "/book",method = RequestMethod.POST)
-    public String saveOrUpdateBook(@RequestParam("fileName") MultipartFile file,@Valid BookModel bookModel, BindingResult bindingResult) throws IOException {
+    //@RequestMapping(value = "/book",method = RequestMethod.POST)
+    @PostMapping(value = "/book")
+    public String saveOrUpdateBook(@Valid BookModel bookModel, BindingResult bindingResult) throws IOException {
 
         if (bindingResult.hasErrors()){
             return "book/formBook";
-        }
-
-        if (file != null && !file.getOriginalFilename().isEmpty()) {
-            File uploadDir = new File(uploadPath);
-
-            if (!uploadDir.exists()) {
-                uploadDir.mkdir();
-            }
-
-            String uuidFile = UUID.randomUUID().toString();
-            String resultFilename = uuidFile + "." + file.getOriginalFilename();
-
-            file.transferTo(new File(uploadPath + "/" + resultFilename));
-
         }
 
         Book savedBook = bookService.saveorUpdateBookModel(bookModel);
